@@ -1,3 +1,5 @@
+//THIS IS A JAVA BASED GAME 'TICTACTOE' WHICH I DEVELOPED IN 2ND YEAR ON NOTEPAD. IT'S NO AI HENCE PC DOESNT LEARN TO WIN ALWAYS. IT WORKS ON RANDOM CLASS. 
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -5,20 +7,20 @@ import java.util.Random;
 import java.applet.*;
 public class TicTacToe2 extends JFrame
 {
-	JButton bt[]=new JButton[9]; 
+	JButton bt[]=new JButton[9];  //BUTTON OBJECTS
 	JButton bc;
 	Random random=new Random();
-	JLabel la=new JLabel(new ImageIcon("images/t2.jpg"));
+	JLabel la=new JLabel(new ImageIcon("images/t2.jpg"));  //IMAGE OF OUTLOOK
 	JLabel msg=new JLabel("USER Turn...");
 	JButton reset=new JButton("RESET");
 	JPanel []pa=new JPanel[2];
-	ImageIcon icon1=new ImageIcon(getClass().getResource("images/user1.png"));
-	ImageIcon icon2=new ImageIcon(getClass().getResource("images/user2.png"));
+	ImageIcon icon1=new ImageIcon(getClass().getResource("images/user1.png"));  //IMAGE OF CROSS 'X' FOR USER1
+	ImageIcon icon2=new ImageIcon(getClass().getResource("images/user2.png"));  //IMAGE OF CIRCLE 'O' FOR USER2
 	String player="";
 	int g=0,count=0,flag=0,pc,flag2=1;
 	boolean winner=false;
-	int record[]=new int[9];
-	public TicTacToe2()
+	int record[]=new int[9];  //TO KEEP RECORD OF TURNS
+	public TicTacToe2()  //INITIALSING OUTLOOK OF GAME
 	{
 	  la.setLayout(null);
 	  setSize(600,640);
@@ -57,7 +59,7 @@ public class TicTacToe2 extends JFrame
 	   addButton();
 	}
 	
-	private void addButton()
+	private void addButton()  //ADDING BUTTONS IN THE PANEL
 	{
 	  pa[1].setLayout(new GridLayout(3,3));
 	  TicListener listener=new TicListener();
@@ -69,7 +71,7 @@ public class TicTacToe2 extends JFrame
 	   }
 	}
 
-	private void findWinner(ImageIcon img)
+	private void findWinner(ImageIcon img)  //FUNCTION TO FIND WINNER AT EVERY TURN
 	{
 	    if(bt[0].getIcon()==img && bt[1].getIcon()==img && bt[2].getIcon()==img)
 		{
@@ -112,7 +114,7 @@ public class TicTacToe2 extends JFrame
 		}
 	}
 
-	private void showWinner(int i1,int i2,int i3)
+	private void showWinner(int i1,int i2,int i3)  //FUNCTION TO SHOW WINNER
 	{
 		  msg.setText(player+"  WON !!!!");
 		  bt[i3].setBackground(Color.green);
@@ -128,7 +130,7 @@ public class TicTacToe2 extends JFrame
 		  return;
 	}
 
-	class TicListener implements ActionListener
+	class TicListener implements ActionListener  //FOR DETECTING CLICK AND CLICKED BUTTON AND THEN PERFORMING ACTIONS ON IT
 	{
 	 	public void actionPerformed(ActionEvent evt)
 		{
@@ -165,7 +167,7 @@ public class TicTacToe2 extends JFrame
 		}
 	}
 
-	private class PcTurn extends Thread
+	private class PcTurn extends Thread  //THIS CLASS IS FOR TURNS OF PC (COMPUTER) WHICH RUNS CONTINUOSLY AS IT EXTENDS THREAD
 	{
 		public void run()
 		{
@@ -206,7 +208,7 @@ public class TicTacToe2 extends JFrame
 		}
 	}
 
-	class resetListener implements ActionListener
+	class resetListener implements ActionListener  //CLASS TO RESET THE GAME WHEN USER CLICKS RESET
 	{
 		public void actionPerformed(ActionEvent evt)
 		{
